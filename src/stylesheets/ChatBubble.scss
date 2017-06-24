@@ -42,6 +42,7 @@
 .from-them {
   @include chat-bubble;
   background-color: $secondary-color;
+  color: #202020;
   float: left;
   margin-right: auto;
 }

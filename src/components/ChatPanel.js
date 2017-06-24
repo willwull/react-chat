@@ -45,7 +45,7 @@ class ChatPanel extends React.Component {
 
   render() {
     return (
-      <div id="chat-panel" className="col-sm-4">
+      <div id="chat-panel">
         <div id="chat-titlebar">
           <h1 id="chat-name">Alice Lastname</h1>
         </div>

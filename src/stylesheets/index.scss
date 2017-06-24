@@ -4,18 +4,20 @@ html, body {
   font-family: sans-serif;
   width: 100%;
   height: 100%;
+  background: url(../img/stardust.png);
+  color: white;
 }
 
-#wcg-widget {
-  width: 100%;
-  height: 100%;
+#app {
+  padding-top: 30px;
+
+  & > h1 {
+    text-align: center;
+  }
 }
 
-#wcg-widget > .container-fluid, #wcg-widget > .container-fluid > .row {
-  height: 100%;
-}
-
-#call-pane {
-  background-color: #333333;
-  height: 100%;
+#chat-wrapper {
+  height: 600px;
+  max-width: 400px;
+  margin: 0 auto;
 }

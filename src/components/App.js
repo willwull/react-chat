@@ -11,8 +11,9 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="container-fluid">
-        <div className="row">
+      <div id="app" className="container">
+        <h1>React chat</h1>
+        <div id="chat-wrapper">
           <ChatPanel username={this.state.username} />
         </div>
       </div>
