@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+#wcg-widget {
+  width: 100%;
+  height: 100%;
+}
+
+#wcg-widget > .container-fluid, #wcg-widget > .container-fluid > .row {
+  height: 100%;
+}
+
+#call-pane {
+  background-color: #333333;
+  height: 100%;
+}

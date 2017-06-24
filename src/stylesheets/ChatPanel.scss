@@ -1,0 +1,40 @@
+/**
+ * ChatPanel.scss
+ * Contains CSS rules for the chat panel that are not component specific.
+ */
+
+@import "globals";
+
+#chat-panel {
+  padding: 0;
+  background-color: white;
+
+  /* Needed to make sure #chat-messages works */
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  max-height: 100%;
+}
+
+/**
+ * The bar/section on top of the chat panel
+ */
+#chat-titlebar {
+  @include primary-color-scheme;
+  width: 100%;
+  padding: 15px;
+  border-bottom: 3px solid darken($primary-color, 10%);
+
+  /* h1 */
+  #chat-name {
+    margin: 0;
+    font-size: 32px;
+  }
+}
+
+#chat-messages {
+  /* Make chat area take up all available vertical space */
+  flex: 1 1 auto;
+
+  overflow-y: scroll;
+}

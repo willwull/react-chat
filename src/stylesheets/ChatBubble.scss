@@ -1,0 +1,56 @@
+/**
+ * ChatBubble.scss
+ * This SASS module contains styles for the ChatBubble.js React Component.
+ */
+
+@import "globals";
+
+/**
+ * This mixin holds the CSS rules for chat bubbles regardless of if the
+ * message is from me or from the other person.
+ */
+@mixin chat-bubble {
+  max-width: 75%;
+  padding: 7px 15px;
+  border-radius: 20px;
+  clear: both;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
+/**
+ * These two classes are used depending on if the current message sender
+ * is the same as the previous sender. If the senders are different, we want
+ * to have some extra space above the message.
+ */
+.chat-consecutive {  margin-top: 3px; }
+.chat-new-sender {  margin-top: 10px; }
+
+/**
+ * Chat bubbles for messages sent by me.
+ */
+.from-me {
+  @include chat-bubble;
+  @include primary-color-scheme;
+  float: right;
+  margin-left: auto;
+}
+
+/**
+ * Chat bubbles for messages sent from the other person.
+ */
+.from-them {
+  @include chat-bubble;
+  background-color: $secondary-color;
+  float: left;
+  margin-right: auto;
+}
+
+.chat-bubble-link {
+  color: inherit;
+  text-decoration: underline;
+
+  &:hover, &:active, &:focus {
+    color: inherit;
+  }
+}

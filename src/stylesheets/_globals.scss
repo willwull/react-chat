@@ -1,0 +1,12 @@
+/**
+ * This file contains variables and mixins that can be accessed by any
+ * SASS module.
+ */
+
+$primary-color: #1edcf6;
+$secondary-color: #f1f1f1;
+
+@mixin primary-color-scheme {
+  background-color: $primary-color;
+  color: white;
+}

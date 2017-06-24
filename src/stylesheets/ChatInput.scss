@@ -1,0 +1,52 @@
+/**
+ * ChatInput.scss
+ * This file contains CSS styling for the bottom part of the chat box where
+ * the text input and send button is.
+ */
+@import "globals";
+
+$send-button-size: 30px;
+
+#chat-input {
+  background-color: white;
+  clear: both;
+  padding: 7px;
+
+  /**
+   * A wrapper for the input field and send button
+   */
+  .input-group {
+    border-radius: 20px;
+    border: 1px solid darken($secondary-color, 10%);
+    background-color: white;
+    padding: 3px;
+  }
+
+  .text-input {
+    width: calc(100% - #{$send-button-size});
+    height: $send-button-size;
+    padding: 0 10px;
+    background: none;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .send-btn {
+    @include primary-color-scheme;
+    width: $send-button-size;
+    height: $send-button-size;
+    border-radius: 50%;
+    border: none;
+
+    &:active {
+      background-color: darken($primary-color, 20%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
