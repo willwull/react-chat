@@ -5,7 +5,7 @@ import "../stylesheets/ChatPanel.css";
 
 /**
  * ChatPanel
- * This component is for the chat area on the right side of the screen.
+ * This component is the "root" component of the entire chat system.
  *
  * @prop {String} username   the name of the user ("you")
  */
