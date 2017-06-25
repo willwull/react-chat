@@ -15,13 +15,11 @@ class ChatPanel extends React.Component {
 
     this.state = {
       messages: [
-        {sender: "Alice", time: "1", text: "Short message"},
-        {sender: this.props.username, time: "2", text: "Hey, this is a slightly longer message!"},
-        {sender: "Alice", time: "3", text: "How about a reeeeeeeeeeeeeeeeeeeeeeaaaaaalllllyyyyyyyyyyyyyyyyy long message?"},
-        {sender: "Alice", time: "4", text: "Here are some"},
-        {sender: "Alice", time: "5", text: "consecutive"},
-        {sender: "Alice", time: "6", text: "messages"},
-        {sender: this.props.username, time: "7", text: "That's pretty cool"}
+        {sender: "Alice", time: "1", text: "Hey 👋"},
+        {sender: this.props.username, time: "2", text: "Yo! Here's a slightly longer message 👍"},
+        {sender: "Alice", time: "3", text: "How about a reeeeeeeeeeeeeeeeeeeeeeaaaaaalllllyyyyyyyyyyyyyyyyy long message? 😂😂"},
+        {sender: "Alice", time: "4", text: "Long words line break automatically 👌"},
+        {sender: this.props.username, time: "7", text: "Links work automatically too! Check it out: https://github.com/willwull/react-chat"}
       ]
     }
 

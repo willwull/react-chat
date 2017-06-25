@@ -31,7 +31,8 @@ class ChatBubble extends React.Component {
       .map((part, i) => {
         if (i % 2 === 1) {
           return (
-            <a className="chat-bubble-link" href={part} target="_blank" rel="noopener noreferrer">
+            <a className="chat-bubble-link" href={part} target="_blank"
+              rel="noopener noreferrer" key={i}>
               {part} <i className="fa fa-external-link" aria-hidden="true"></i>
             </a>
           );
