@@ -11,6 +11,7 @@ class ChatInput extends React.Component {
   constructor () {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.focusOnInput = this.focusOnInput.bind(this);
   }
 
   /**
@@ -27,6 +28,10 @@ class ChatInput extends React.Component {
 
     this.input.value = ""; // empty input field
     this.props.sendMessage(text);
+    this.focusOnInput();
+  }
+
+  focusOnInput() {
     this.input.focus();
   }
 

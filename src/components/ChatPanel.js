@@ -24,6 +24,7 @@ class ChatPanel extends React.Component {
     }
 
     this.sendMessage = this.sendMessage.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   /**
@@ -41,14 +42,26 @@ class ChatPanel extends React.Component {
     });
   }
 
+  /**
+   * handleClick
+   * Handles when the user clicks on #chat-content, which is the area below the
+   * title bar.
+   * Calls the focusOnInput function of the ChatInput component.
+   */
+  handleClick() {
+    this.refs.input.focusOnInput();
+  }
+
   render() {
     return (
       <div id="chat-panel">
         <div id="chat-titlebar">
           <h1 id="chat-name">Alice Lastname</h1>
         </div>
-        <ChatMessages username={this.props.username} messages={this.state.messages} />
-        <ChatInput sendMessage={this.sendMessage} />
+        <div id="chat-content" onClick={this.handleClick}>
+          <ChatMessages username={this.props.username} messages={this.state.messages} />
+          <ChatInput ref="input" sendMessage={this.sendMessage} />
+        </div>
       </div>
     )
   }
