@@ -11,6 +11,11 @@ import "../stylesheets/ChatMessages.css";
  *                          {sender: String, time: Date, text: String}
  */
 class ChatMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.formatMessages = this.formatMessages.bind(this);
+  }
+
   componentDidUpdate(newProps) {
     // After this component is updated (i.e. new message)
     // scroll to the bottom
