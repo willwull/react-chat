@@ -10,7 +10,7 @@
   background-color: white;
   font-size: 14px;
 
-  /* Needed to make sure #chat-messages works */
+  /* Needed to make sure #chat-messages (see ChatMessages.scss) works */
   display: flex;
   flex-flow: column;
   height: 100%;
@@ -41,12 +41,4 @@
     margin: 0;
     font-size: 32px;
   }
-}
-
-#chat-messages {
-  /* Make chat area take up all available vertical space */
-  flex: 1 1 auto;
-
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }

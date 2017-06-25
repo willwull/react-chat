@@ -1,0 +1,12 @@
+@import "globals";
+
+#chat-messages {
+  padding-bottom: 15px;
+
+  /* Make chat area take up all available vertical space */
+  flex: 1 1 auto;
+
+  overflow-y: scroll;
+  /* Enable momentum scrolling in iOS */
+  -webkit-overflow-scrolling: touch;
+}

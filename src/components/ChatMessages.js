@@ -1,5 +1,6 @@
 import React from "react";
 import ChatBubble from "./ChatBubble";
+import "../stylesheets/ChatMessages.css";
 
 /**
  * ChatMessages
