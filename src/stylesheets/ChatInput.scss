@@ -5,8 +5,6 @@
  */
 @import "globals";
 
-$send-button-size: 30px;
-
 #chat-input {
   background-color: $secondary-color;
   border-top: 1px solid darken($secondary-color, 10%);
@@ -20,12 +18,11 @@ $send-button-size: 30px;
     border-radius: 20px;
     border: 1px solid darken($secondary-color, 10%);
     background-color: white;
-    padding: 3px;
+    padding: 1px;
   }
 
   .text-input {
-    width: calc(100% - #{$send-button-size});
-    height: $send-button-size;
+    width: 100%;
     padding: 0 10px;
     background: none;
     border: none;
@@ -36,18 +33,27 @@ $send-button-size: 30px;
   }
 
   .send-btn {
-    @include primary-color-scheme;
-    width: $send-button-size;
-    height: $send-button-size;
-    border-radius: 50%;
+    background: none;
     border: none;
+    padding: 0;
+    font-size: 14px;
+
+    /**
+     * The background is created by stacking the arrow on a circle icon,
+     * so that's why we use color, instead of background-color here.
+     */
+    color: $primary-color;
 
     &:active {
-      background-color: darken($primary-color, 20%);
+      color: darken($primary-color, 20%);
     }
 
     &:focus {
       outline: none;
     }
+  }
+
+  .fa-arrow-right {
+    color: white;
   }
 }

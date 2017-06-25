@@ -45,7 +45,10 @@ class ChatInput extends React.Component {
             type='submit'
             value='Send'
           >
-            <i className="fa fa-arrow-right"></i>
+            <span className="fa-stack fa-lg">
+              <i className="fa fa-circle fa-stack-2x"></i>
+              <i className="fa fa-arrow-right fa-stack-1x"></i>
+            </span>
           </button>
         </div>
       </form>
