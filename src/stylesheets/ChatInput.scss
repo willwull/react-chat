@@ -8,7 +8,8 @@
 $send-button-size: 30px;
 
 #chat-input {
-  background-color: white;
+  background-color: $secondary-color;
+  border-top: 1px solid darken($secondary-color, 10%);
   clear: both;
   padding: 7px;
 
