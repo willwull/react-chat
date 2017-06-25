@@ -1,7 +1,7 @@
 # react-chat
 A responsive chat/messenger component made with React.
 
-<img src="screenshot.png" alt="Screenshot" style="width: 500px;"/>
+<img src="screenshot.png" alt="Screenshot" width="500px"/>
 
 This is just a simple front end for a chat, whose appearance is based on Facebook Messenger and iMessage.
 
