@@ -27,6 +27,7 @@ class ChatInput extends React.Component {
 
     this.input.value = ""; // empty input field
     this.props.sendMessage(text);
+    this.input.focus();
   }
 
   render() {
