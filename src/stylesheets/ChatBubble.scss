@@ -10,6 +10,7 @@
  * message is from me or from the other person.
  */
 @mixin chat-bubble {
+  line-height: 1.35em;
   max-width: 75%;
   padding: 7px 15px;
   border-radius: 20px;
