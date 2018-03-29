@@ -18,7 +18,6 @@
  */
 
 const path = require("path");
-const webpack = require("webpack");
 const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -110,7 +109,7 @@ if (production) {
           minifyURLs: true,
         },
       }),
-    ]
+    ],
   });
 } else {
   merged = merge(config, {
@@ -155,6 +154,6 @@ if (production) {
       }),
     ],
   });
-};
+}
 
 module.exports = merged;
