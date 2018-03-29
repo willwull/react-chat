@@ -23,7 +23,6 @@ const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 const production = process.env.NODE_ENV === "production";
 
@@ -65,6 +64,8 @@ const config = {
 let merged;
 if (production) {
   merged = merge(config, {
+    // minify JS, set process.env.NODE_ENV = "production" and other optimizations
+    mode: "production",
     // source map type
     devtool: "source-map",
     module: {
@@ -109,16 +110,12 @@ if (production) {
           minifyURLs: true,
         },
       }),
-      // useful to enable some optimizations in react
-      new webpack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify("production")
-      }),
-      // minify JS
-      new UglifyJsPlugin(),
     ]
   });
 } else {
   merged = merge(config, {
+    // sets process.env.NODE_ENV = "development" and shows module path names
+    mode: "development",
     // source map type
     devtool: "cheap-eval-source-map",
     devServer: {
