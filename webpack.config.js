@@ -12,9 +12,9 @@
  * Dependencies in this config:
  * npm i -D webpack webpack-cli webpack-dev-server
  * npm i -D uglifyjs-webpack-plugin clean-webpack-plugin webpack-merge
- * npm i -D node-sass sass-loader css-loader style-loader extract-text-webpack-plugin
- * npm i -D html-webpack-plugin
- * npm i -D babel-loader babel-preset-react babel-preset-env
+ * npm i -D node-sass sass-loader css-loader style-loader
+ * npm i -D html-webpack-plugin extract-text-webpack-plugin@^4.0.0-beta.0
+ * npm i -D babel-core babel-loader babel-preset-react babel-preset-env
  */
 
 const path = require("path");
