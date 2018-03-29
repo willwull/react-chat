@@ -1,4 +1,4 @@
-// npm i -D eslint
+// npm i -D eslint babel-eslint
 // npx eslint --init
 
 module.exports = {
@@ -7,6 +7,7 @@ module.exports = {
     "node": true,
     "browser": true,
   },
+  "parser": "babel-eslint",
   "rules": {
     "quotes": [
       "error",
