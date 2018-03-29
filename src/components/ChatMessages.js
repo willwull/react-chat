@@ -11,16 +11,10 @@ import "../stylesheets/ChatMessages.css";
  *                          {sender: String, time: Date, text: String}
  */
 class ChatMessages extends React.Component {
-  constructor(props) {
-    super(props);
-    this.formatMessages = this.formatMessages.bind(this);
-  }
-
-  componentDidUpdate(newProps) {
+  componentDidUpdate() {
     // After this component is updated (i.e. new message)
     // scroll to the bottom
-    let chatMessages = document.getElementById("chat-messages");
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
   }
 
   /**
@@ -35,26 +29,29 @@ class ChatMessages extends React.Component {
    */
   formatMessages(messages) {
     let prevSenderName = "";
-    let formatted = messages.map((msg) => {
-      let consecutive = msg.sender === prevSenderName ? true : false;
+    const formatted = messages.map((msg) => {
+      const isConsecutive = msg.sender === prevSenderName;
       prevSenderName = msg.sender;
       return (
-        <ChatBubble key={msg.time}
+        <ChatBubble
+          key={msg.time}
           username={this.props.username}
-          sender={msg.sender} time={msg.time} text={msg.text}
-          consecutive={consecutive}
+          sender={msg.sender}
+          time={msg.time}
+          text={msg.text}
+          isConsecutive={isConsecutive}
         />
-      )
+      );
     });
     return formatted;
   }
 
   render() {
     return (
-      <div id="chat-messages">
+      <div id="chat-messages" ref={(ref) => { this.chatMessages = ref; }}>
         {this.formatMessages(this.props.messages)}
       </div>
-    )
+    );
   }
 }
 

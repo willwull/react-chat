@@ -19,5 +19,6 @@ module.exports = {
     "no-plusplus": 0,
     "quote-props": 0,
     "react/jsx-filename-extension": 0,
+    "object-curly-newline": 0,
   },
 };
