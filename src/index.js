@@ -2,13 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
-import "./stylesheets/index.css";
+import "./stylesheets/index.scss";
 
-var root = document.getElementById("root");
-var fullscreen = root.dataset.fullscreen;
+const root = document.getElementById("root");
 
-ReactDOM.render(
-  <App fullscreen={fullscreen} />,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, root);
 registerServiceWorker();

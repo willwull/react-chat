@@ -1,7 +1,7 @@
 import React from "react";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
-import "../stylesheets/ChatPanel.css";
+import "../stylesheets/ChatPanel.scss";
 
 /**
  * ChatPanel

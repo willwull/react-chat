@@ -1,5 +1,5 @@
 import React from "react";
-import "../stylesheets/ChatInput.css";
+import "../stylesheets/ChatInput.scss";
 
 /**
  * ChatInput

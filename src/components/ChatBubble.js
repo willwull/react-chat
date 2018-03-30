@@ -1,5 +1,5 @@
 import React from "react";
-import "../stylesheets/ChatBubble.css";
+import "../stylesheets/ChatBubble.scss";
 
 /**
  * parseURLs
