@@ -55,7 +55,7 @@ class ChatPanel extends React.Component {
     return (
       <div id="chat-panel">
         <div id="chat-titlebar">
-          <h1 id="chat-name">Alice Lastname</h1>
+          <h1 id="chat-name">react-chat</h1>
         </div>
         <div id="chat-content" onClick={this.handleClick} role="presentation">
           <ChatMessages username={this.props.username} messages={this.state.messages} />
