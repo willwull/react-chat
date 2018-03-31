@@ -1,6 +1,7 @@
 import React from "react";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
+import { database } from "../firebase";
 import "../stylesheets/ChatPanel.scss";
 
 /**
@@ -11,14 +12,19 @@ import "../stylesheets/ChatPanel.scss";
  */
 class ChatPanel extends React.Component {
   state = {
-    messages: [
-      { sender: "Alice", time: "1", text: "Hey 👋" },
-      { sender: this.props.username, time: "2", text: "Yo! Here's a slightly longer message 👍" },
-      { sender: "Alice", time: "3", text: "How about a reeeeeeeeeeeeeeeeeeeeeeaaaaaalllllyyyyyyyyyyyyyyyyy long message? 😂😂" },
-      { sender: "Alice", time: "4", text: "Long words line break automatically 👌" },
-      { sender: this.props.username, time: "7", text: "Links work automatically too! Check it out: https://github.com/willwull/react-chat" },
-    ],
+    messages: [],
   };
+
+  componentDidMount() {
+    console.log("mount");
+    const messagesRef = database.ref("messages");
+    messagesRef.on("child_added", (snapshot) => {
+      const msg = snapshot.val();
+      const messagesNew = [...this.state.messages];
+      messagesNew.push(msg);
+      this.setState({ messages: messagesNew });
+    });
+  }
 
   /**
    * sendMessage - TODO
@@ -27,10 +33,13 @@ class ChatPanel extends React.Component {
    * @param  {String} msgText   The message
    */
   sendMessage = (msgText) => {
-    const messagesNew = [...this.state.messages];
-    const msg = { sender: this.props.username, time: new Date().toString(), text: msgText };
-    messagesNew.push(msg);
-    this.setState({ messages: messagesNew });
+    const time = new Date();
+    const msg = {
+      sender: this.props.username,
+      text: msgText,
+      time: time.toString(),
+    };
+    database.ref("messages").push(msg);
   }
 
   /**
