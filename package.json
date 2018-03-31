@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server --hot --inline --host 0.0.0.0",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
