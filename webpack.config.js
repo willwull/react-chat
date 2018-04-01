@@ -39,7 +39,7 @@ const outputDirName = "./dist";
 const htmlFile = "index.html";
 
 // the public path, must be specified so historyApiFallback works for nested/paths/
-const publicPath = "/";
+const publicPath = "";
 
 // common config options for both dev and prod
 const config = {
