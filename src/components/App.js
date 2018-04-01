@@ -1,33 +1,41 @@
 import React from "react";
 import ChatPanel from "./ChatPanel";
+import Loader from "./Loader";
+import firebase from "../firebase";
 
 class App extends React.Component {
   state = {
     username: "",
   }
 
-  onFormSubmit = (e) => {
-    e.preventDefault();
-    const inputVal = e.target.username.value;
-    if (!inputVal) return;
+  componentDidMount() {
+    firebase.auth().signInAnonymously()
+      .catch((err) => {
+        console.error(err);
+      });
 
-    this.setState({ username: inputVal });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // user has signed in
+        console.log(user.uid);
+        this.setState({ username: user.uid });
+      } else {
+        console.log("else");
+      }
+    });
   }
 
   render() {
     const { username } = this.state;
-    if (!username) {
+    const { currentUser } = firebase.auth();
+
+    if (!currentUser) {
       return (
-        <div>
-          <form onSubmit={this.onFormSubmit}>
-            <input type="text" name="username" id="username" />
-            <button type="submit">Set name</button>
-          </form>
-        </div>
+        <Loader />
       );
     }
     return (
-      <ChatPanel username={this.state.username} />
+      <ChatPanel username={username} />
     );
   }
 }
