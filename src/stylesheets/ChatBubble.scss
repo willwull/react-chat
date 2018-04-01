@@ -5,47 +5,60 @@
 
 @import "globals";
 
+.chat-bubble-container {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 /**
- * This mixin holds the CSS rules for chat bubbles regardless of if the
+ * This class holds the CSS rules for chat bubbles regardless of if the
  * message is from me or from the other person.
  */
-@mixin chat-bubble {
+.chat-bubble {
+  margin-top: 5px;
   line-height: 1.35em;
   max-width: 75%;
   padding: 7px 15px;
   border-radius: 20px;
-  clear: both;
   white-space: pre-line;
   overflow-wrap: break-word;
 }
 
-/**
- * These two classes are used depending on if the current message sender
- * is the same as the previous sender. If the senders are different, we want
- * to have some extra space above the message.
- */
-.chat-consecutive {  margin-top: 3px; }
-.chat-new-sender {  margin-top: 10px; }
+.sender-name {
+  margin-top: 5px;
+  padding: 0 8px;
+  font-size: 0.9em;
+  opacity: 0.5;
+}
 
 /**
  * Chat bubbles for messages sent by me.
  */
 .from-me {
-  @include chat-bubble;
-  @include primary-color-scheme;
-  float: right;
-  margin-left: auto;
+  text-align: right;
+  align-items: flex-end;
+
+  .sender-name {
+    opacity: 0.2;
+  }
+
+  .chat-bubble {
+    @include primary-color-scheme;
+  }
 }
 
 /**
  * Chat bubbles for messages sent from the other person.
  */
 .from-them {
-  @include chat-bubble;
-  background-color: $secondary-color;
-  color: #202020;
-  float: left;
-  margin-right: auto;
+  text-align: left;
+  align-items: flex-start;
+
+  .chat-bubble {
+    background-color: $secondary-color;
+    color: #202020;
+  }
 }
 
 .chat-bubble-link {
