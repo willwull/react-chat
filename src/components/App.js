@@ -1,11 +1,12 @@
 import React from "react";
 import ChatPanel from "./ChatPanel";
 import Loader from "./Loader";
-import firebase from "../firebase";
+import firebase, { database } from "../firebase";
 
 class App extends React.Component {
   state = {
     username: "",
+    messages: [],
   }
 
   componentDidMount() {
@@ -23,10 +24,28 @@ class App extends React.Component {
         console.log("else");
       }
     });
+
+    database.ref("messages").on("child_added", (snapshot) => {
+      const msg = snapshot.val();
+      const messagesNew = [...this.state.messages];
+      messagesNew.push(msg);
+      this.setState({ messages: messagesNew });
+    });
+  }
+
+  sendMessage = (msgText) => {
+    const time = new Date();
+    const msg = {
+      sender: this.state.username,
+      text: msgText,
+      time: time.toString(),
+    };
+    database.ref("messages").push(msg);
   }
 
   render() {
-    const { username } = this.state;
+    const { username, messages } = this.state;
+    const { sendMessage } = this;
     const { currentUser } = firebase.auth();
 
     if (!currentUser) {
@@ -35,7 +54,7 @@ class App extends React.Component {
       );
     }
     return (
-      <ChatPanel username={username} />
+      <ChatPanel chatName="react-chat" username={username} messages={messages} sendMessage={sendMessage} />
     );
   }
 }

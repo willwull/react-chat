@@ -33,12 +33,6 @@ function parseURLs(text) {
 /**
  * ChatBubble
  * This component is used for chat bubbles in the ChatPanel component.
- *
- * @prop {String} username     The name of the logged in guest user
- * @prop {String} sender        The name of the sender
- * @prop {String} time          The date/time of the message
- * @prop {String} text          The message itself
- * @prop {Boolean} consecutive  True if prev. message sender is the same as this sender
  */
 function ChatBubble({ username, sender, time, text, isConsecutive }) {
   const me = username;
