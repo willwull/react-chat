@@ -43,22 +43,16 @@ function parseURLs(text) {
 function ChatBubble({ username, sender, time, text, isConsecutive }) {
   const me = username;
 
-  // the class `chat-new-sender` adds more margin-top
-  let classes = isConsecutive ? "chat-consecutive " : "chat-new-sender ";
-
   // check if sender of message is me or them, add a class accordingly
-  if (sender === me) {
-    classes += "from-me";
-  } else {
-    classes += "from-them";
-  }
+  const senderClass = sender === me ? "from-me" : "from-them";
 
   return (
     <div
-      className="chat-bubble-container container-fluid"
+      className={`chat-bubble-container ${senderClass}`}
       title={`Sent by ${sender} at ${time}`}
     >
-      <div className={classes} data-time={time}>
+      {!isConsecutive && <div className="sender-name">{sender}</div>}
+      <div className="chat-bubble" data-time={time}>
         {parseURLs(text)}
       </div>
     </div>
