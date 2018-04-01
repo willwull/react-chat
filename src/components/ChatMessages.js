@@ -18,8 +18,7 @@ class ChatMessages extends React.Component {
   }
 
   componentDidUpdate() {
-    // After this component is updated (i.e. new message)
-    // scroll to the bottom
+    // After this component is updated (i.e. new message) scroll to the bottom
     this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
   }
 
