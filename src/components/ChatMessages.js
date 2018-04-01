@@ -1,16 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ChatBubble from "./ChatBubble";
 import "../stylesheets/ChatMessages.scss";
 
 /**
  * ChatMessages
  * The section in the chatbox that holds all messages. Child of ChatPanel.
- *
- * @prop {String} username The name of the logged in guest user
- * @prop {array} messages   An array of messages in the format:
- *                          {sender: String, time: Date, text: String}
  */
 class ChatMessages extends React.Component {
+  static propTypes = {
+    username: PropTypes.string.isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape({
+      sender: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+    })).isRequired,
+  }
+
   componentDidUpdate() {
     // After this component is updated (i.e. new message)
     // scroll to the bottom

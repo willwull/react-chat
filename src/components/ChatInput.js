@@ -1,13 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../stylesheets/ChatInput.scss";
 
 /**
  * ChatInput
  * This component is the input area for the chat and the send message button.
- *
- * @prop {function} sendMessage A function to send the message (from ChatPanel)
  */
 class ChatInput extends React.Component {
+  static propTypes = {
+    sendMessage: PropTypes.func.isRequired,
+  }
+
   /**
    * handleSubmit
    * Tries to send the message, and then clears the input field.

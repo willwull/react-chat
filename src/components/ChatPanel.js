@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
 import "../stylesheets/ChatPanel.scss";
@@ -8,6 +9,17 @@ import "../stylesheets/ChatPanel.scss";
  * This component is the "root" component of the entire chat system.
  */
 class ChatPanel extends React.Component {
+  static propTypes = {
+    chatName: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape({
+      sender: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      time: PropTypes.string.isRequired,
+    })).isRequired,
+    sendMessage: PropTypes.func.isRequired,
+  }
+
   /**
    * handleClick
    * Handles when the user clicks on #chat-content, which is the area below the

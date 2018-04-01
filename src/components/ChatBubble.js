@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../stylesheets/ChatBubble.scss";
 
 /**
@@ -49,5 +50,13 @@ function ChatBubble({ username, sender, time, text, isConsecutive }) {
     </div>
   );
 }
+
+ChatBubble.propTypes = {
+  username: PropTypes.string.isRequired,
+  sender: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  isConsecutive: PropTypes.bool.isRequired,
+};
 
 export default ChatBubble;
