@@ -7,6 +7,7 @@ class App extends React.Component {
   state = {
     username: "",
     messages: [],
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class App extends React.Component {
       const msg = snapshot.val();
       const messagesNew = [...this.state.messages];
       messagesNew.push(msg);
-      this.setState({ messages: messagesNew });
+      this.setState({ messages: messagesNew, isLoading: false });
     });
   }
 
@@ -44,11 +45,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { username, messages } = this.state;
+    const { username, messages, isLoading } = this.state;
     const { sendMessage } = this;
     const { currentUser } = firebase.auth();
 
-    if (!currentUser) {
+    if (!currentUser || isLoading) {
       return (
         <Loader />
       );
