@@ -1,0 +1,215 @@
+/**
+ * ChatBubble.scss
+ * This SASS module contains styles for the ChatBubble.js React Component.
+ */
+/**
+ * This file contains variables and mixins that can be accessed by any
+ * SASS module.
+ */
+.chat-bubble-container {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column; }
+
+/**
+ * This class holds the CSS rules for chat bubbles regardless of if the
+ * message is from me or from the other person.
+ */
+.chat-bubble {
+  margin-top: 5px;
+  line-height: 1.35em;
+  max-width: 75%;
+  padding: 7px 15px;
+  border-radius: 20px;
+  white-space: pre-line;
+  overflow-wrap: break-word; }
+
+.sender-name {
+  margin-top: 5px;
+  padding: 0 8px;
+  font-size: 0.9em;
+  opacity: 0.5; }
+
+/**
+ * Chat bubbles for messages sent by me.
+ */
+.from-me {
+  text-align: right;
+  align-items: flex-end; }
+  .from-me .sender-name {
+    opacity: 0.2; }
+  .from-me .chat-bubble {
+    background-color: #1edcf6;
+    color: white; }
+
+/**
+ * Chat bubbles for messages sent from the other person.
+ */
+.from-them {
+  text-align: left;
+  align-items: flex-start; }
+  .from-them .chat-bubble {
+    background-color: #f1f1f1;
+    color: #202020; }
+
+.chat-bubble-link {
+  color: inherit;
+  text-decoration: underline; }
+  .chat-bubble-link:hover, .chat-bubble-link:active, .chat-bubble-link:focus {
+    color: inherit; }
+/**
+ * This file contains variables and mixins that can be accessed by any
+ * SASS module.
+ */
+#chat-messages {
+  padding-bottom: 15px;
+  /* Make chat area take up all available vertical space */
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  /* Enable momentum scrolling in iOS */
+  -webkit-overflow-scrolling: touch; }
+/**
+ * ChatInput.scss
+ * This file contains CSS styling for the bottom part of the chat box where
+ * the text input and send button is.
+ */
+/**
+ * This file contains variables and mixins that can be accessed by any
+ * SASS module.
+ */
+#chat-input {
+  background-color: #f1f1f1;
+  border-top: 1px solid #d8d8d8;
+  clear: both;
+  padding: 7px;
+  /**
+   * A wrapper for the input field and send button
+   */ }
+  #chat-input .input-group {
+    border-radius: 20px;
+    border: 1px solid #d8d8d8;
+    background-color: white;
+    padding: 1px; }
+  #chat-input .text-input {
+    width: 100%;
+    padding: 0 10px;
+    background: none;
+    border: none; }
+    #chat-input .text-input:focus {
+      outline: none; }
+  #chat-input .send-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    /**
+     * The background is created by stacking the arrow on a circle icon,
+     * so that's why we use color, instead of background-color here.
+     */
+    color: #1edcf6; }
+    #chat-input .send-btn:active {
+      color: #0794a7; }
+    #chat-input .send-btn:focus {
+      outline: none; }
+  #chat-input .fa-arrow-right {
+    color: white; }
+.loader {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+.circular {
+  animation: rotate 2s linear infinite;
+  height: 100px;
+  position: relative;
+  width: 100px; }
+
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round; }
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35; }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124; } }
+
+@keyframes color {
+  100%, 0% {
+    stroke: #d62d20; }
+  40% {
+    stroke: #0057e7; }
+  66% {
+    stroke: #2ec50f; }
+  80%, 90% {
+    stroke: #ffa700; } }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
+#root {
+  height: 100%;
+  width: 100%; }
+/**
+ * ChatPanel.scss
+ * Contains CSS rules for the chat panel that are not component specific.
+ */
+/**
+ * This file contains variables and mixins that can be accessed by any
+ * SASS module.
+ */
+#chat-panel {
+  padding: 0;
+  background-color: white;
+  font-size: 14px;
+  /* Code to make sure #chat-content will take up all remaining vertical space */
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  max-height: 100%; }
+
+#chat-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  max-height: 100%; }
+
+/**
+ * Increase font-size on smaller viewports
+ */
+@media (max-width: 575px) {
+  #chat-panel {
+    font-size: 16px; } }
+
+/**
+ * The bar/section on top of the chat panel
+ */
+#chat-titlebar {
+  background-color: #1edcf6;
+  color: white;
+  width: 100%;
+  padding: 15px;
+  border-bottom: 3px solid #09bfd8;
+  /* h1 */ }
+  #chat-titlebar #chat-name {
+    margin: 0;
+    font-size: 32px; }
+
+/*# sourceMappingURL=style.bundle.css.map*/
