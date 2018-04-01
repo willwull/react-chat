@@ -47,12 +47,9 @@ function ChatBubble({ username, sender, time, text, isConsecutive }) {
   const senderClass = sender === me ? "from-me" : "from-them";
 
   return (
-    <div
-      className={`chat-bubble-container ${senderClass}`}
-      title={`Sent by ${sender} at ${time}`}
-    >
+    <div className={`chat-bubble-container ${senderClass}`}>
       {!isConsecutive && <div className="sender-name">{sender}</div>}
-      <div className="chat-bubble" data-time={time}>
+      <div className="chat-bubble" data-time={time} title={`Sent by ${sender} at ${time}`}>
         {parseURLs(text)}
       </div>
     </div>
