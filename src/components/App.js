@@ -1,7 +1,9 @@
 import React from "react";
+import Threads from "./Threads";
 import ChatPanel from "./ChatPanel";
 import Loader from "./Loader";
 import firebase, { database } from "../firebase";
+import "../stylesheets/App.scss";
 
 class App extends React.Component {
   state = {
@@ -55,7 +57,10 @@ class App extends React.Component {
       );
     }
     return (
+      <div id="container">
+        <Threads />
       <ChatPanel chatName="react-chat" username={username} messages={messages} sendMessage={sendMessage} />
+      </div>
     );
   }
 }
