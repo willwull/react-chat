@@ -1,3 +1,5 @@
+@import "globals";
+
 .threads {
   $border-color: #e6e6e6;
   border-right: 1px $border-color solid;
@@ -7,5 +9,18 @@
     font-size: 24px;
     padding: 15px;
     border-bottom: 1px $border-color solid;
+    display: flex;
+    justify-content: space-between;
+
+    #new-convo-btn {
+      @include primary-color-scheme;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      border-radius: 25px;
+      padding: 0 10px;
+      cursor: pointer;
+      box-shadow: rgba($primary-color, 0.3) 0 5px 15px;
+    }
   }
 }

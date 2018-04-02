@@ -6,7 +6,12 @@ import "../stylesheets/Threads.scss";
 function Threads(props) {
   return (
     <div className="threads">
-      <div className="titlebar">Conversations</div>
+      <div className="titlebar">
+        Conversations
+        <button id="new-convo-btn">
+          New
+        </button>
+      </div>
       <div className="list">
         <ThreadItem title="react-chat" msg="lul" time="0" />
       </div>

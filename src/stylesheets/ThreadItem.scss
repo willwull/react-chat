@@ -2,8 +2,12 @@
   display: flex;
   padding: 15px;
 
+  .title {
+    font-weight: bold;
+  }
+
   .time, .last-msg {
-    color: #dfdfdf;
+    color: #a7a7a7;
   }
 
   .time {
