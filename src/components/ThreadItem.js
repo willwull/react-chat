@@ -5,8 +5,10 @@ import "../stylesheets/ThreadItem.scss";
 function ThreadItem({ title, msg, time }) {
   return (
     <div className="thread-item">
-      <div className="title">{title}</div>
-      <div className="last-msg">{msg}</div>
+      <div>
+        <div className="title">{title}</div>
+        <div className="last-msg">{msg}</div>
+      </div>
       <div className="time">{time}</div>
     </div>
   );

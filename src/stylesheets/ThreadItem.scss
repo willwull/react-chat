@@ -1,3 +1,13 @@
 .thread-item {
+  display: flex;
+  padding: 15px;
 
+  .time, .last-msg {
+    color: #dfdfdf;
+  }
+
+  .time {
+    text-align: right;
+    flex-grow: 1;
+  }
 }

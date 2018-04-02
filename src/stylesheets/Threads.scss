@@ -1,7 +1,11 @@
 .threads {
+  $border-color: #e6e6e6;
+  border-right: 1px $border-color solid;
+
   .titlebar {
+    font-weight: bold;
     font-size: 24px;
     padding: 15px;
-    border-bottom: 1px #e6e6e6 solid;
+    border-bottom: 1px $border-color solid;
   }
 }
