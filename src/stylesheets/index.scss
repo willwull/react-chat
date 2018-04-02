@@ -1,4 +1,32 @@
+@import "globals";
+
 html, body {
   margin: 0;
   padding: 0;
+}
+
+.thread-popup {
+  font-size: 16px;
+
+  input {
+    font-size: 16px;
+  }
+
+  button {
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+
+  .cancel {
+    color: inherit;
+    background: none;
+    border: none;
+  }
+
+  .confirm {
+    @include primary-color-scheme;
+    border: none;
+    border-radius: 25px;
+    box-shadow: rgba($primary-color, 0.3) 0 5px 15px;
+  }
 }
