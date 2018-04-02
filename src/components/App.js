@@ -9,7 +9,7 @@ class App extends React.Component {
   state = {
     username: "",
     messages: [],
-    isLoading: true,
+    isLoading: false,
   }
 
   componentDidMount() {
@@ -59,7 +59,7 @@ class App extends React.Component {
     return (
       <div id="container">
         <Threads />
-      <ChatPanel chatName="react-chat" username={username} messages={messages} sendMessage={sendMessage} />
+        <ChatPanel chatName="react-chat" username={username} messages={messages} sendMessage={sendMessage} />
       </div>
     );
   }
