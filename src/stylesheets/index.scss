@@ -9,7 +9,7 @@ html, body {
   font-size: 16px;
 
   input {
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   button {
@@ -21,6 +21,7 @@ html, body {
     color: inherit;
     background: none;
     border: none;
+    opacity: 0.2;
   }
 
   .confirm {
