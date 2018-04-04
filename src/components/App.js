@@ -105,7 +105,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { username, currentThreadName, messages, isLoading, threads } = this.state;
+    const { username, currentThreadName, currentThreadId, messages, isLoading, threads } = this.state;
     const { sendMessage, setCurrentThread, createNewThread } = this;
     const { currentUser } = firebase.auth();
 
@@ -118,10 +118,11 @@ class App extends React.Component {
       <div id="container">
         <Threads
           threads={threads}
+          currentThreadId={currentThreadId}
           setCurrentThread={setCurrentThread}
           createNewThread={createNewThread}
         />
-        {currentThreadName && <ChatPanel
+        {currentThreadId && <ChatPanel
           chatName={currentThreadName}
           username={username}
           messages={messages}

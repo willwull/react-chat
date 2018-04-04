@@ -5,7 +5,7 @@ import "../stylesheets/ThreadItem.scss";
 
 const ENTER_KEY_CODE = 13;
 
-function ThreadItem({ thread, setCurrentThread }) {
+function ThreadItem({ isCurrent, thread, setCurrentThread }) {
   const clickHandler = () => {
     setCurrentThread(thread.key, thread.title);
   };
@@ -16,12 +16,13 @@ function ThreadItem({ thread, setCurrentThread }) {
     }
   };
 
+  const className = isCurrent ? "thread-item current" : "thread-item";
   const msgText = thread.msg ? thread.msg.text : "No messages yet";
   const msgTime = thread.msg ? getDisplayTime(thread.msg.time) : "";
 
   return (
     <div
-      className="thread-item"
+      className={className}
       onClick={clickHandler}
       onKeyPress={keyHandler}
       role="menuitem"
@@ -37,6 +38,7 @@ function ThreadItem({ thread, setCurrentThread }) {
 }
 
 ThreadItem.propTypes = {
+  isCurrent: PropTypes.bool.isRequired,
   thread: PropTypes.shape({
     key: PropTypes.string,
     title: PropTypes.string,

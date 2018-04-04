@@ -2,6 +2,10 @@
   padding: 15px;
   cursor: pointer;
 
+  &.current, &:hover {
+    background: rgba(black, 0.05);
+  }
+
   .top-row {
     display: flex;
   }
