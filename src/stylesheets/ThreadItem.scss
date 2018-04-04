@@ -1,0 +1,32 @@
+.thread-item {
+  padding: 15px;
+  cursor: pointer;
+  outline: none;
+
+  &.current, &:hover, &:focus {
+    background: rgba(black, 0.05);
+  }
+
+  .top-row {
+    display: flex;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .last-msg {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .time, .last-msg {
+    color: #a7a7a7;
+  }
+
+  .time {
+    text-align: right;
+    flex-grow: 1;
+  }
+}
