@@ -1,8 +1,9 @@
 .thread-item {
   padding: 15px;
   cursor: pointer;
+  outline: none;
 
-  &.current, &:hover {
+  &.current, &:hover, &:focus {
     background: rgba(black, 0.05);
   }
 
