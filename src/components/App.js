@@ -35,10 +35,10 @@ class App extends React.Component {
 
   loadMessages(threadId) {
     if (!threadId) return;
+    this.setState({ messages: [] });
 
     database.ref(`messages/${threadId}`).on("value", (snapshot) => {
       if (!snapshot.val()) {
-        this.setState({ messages: [] });
         return;
       }
 
