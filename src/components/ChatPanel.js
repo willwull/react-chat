@@ -16,6 +16,7 @@ class ChatPanel extends React.Component {
       sender: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       time: PropTypes.string.isRequired,
+      key: PropTypes.string.isRequired,
     })).isRequired,
     sendMessage: PropTypes.func.isRequired,
   }

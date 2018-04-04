@@ -17,8 +17,33 @@ class App extends React.Component {
 
   componentDidMount() {
     this.handleLogin();
-    this.loadMessages();
     this.loadThreads();
+  }
+
+  setCurrentThread = (newThreadId, newThreadName) => {
+    // stop listening on the previous message thread
+    database.ref(`messages/${this.state.currentThreadId}`).off();
+
+    this.setState({
+      currentThreadId: newThreadId,
+      currentThreadName: newThreadName,
+      messages: [],
+    });
+
+    this.loadMessages(newThreadId);
+  }
+
+  loadMessages(threadId) {
+    if (!threadId) return;
+
+    database.ref(`messages/${threadId}`).on("child_added", (snapshot) => {
+      const msg = {
+        ...snapshot.val(),
+        key: snapshot.key,
+      };
+      const messagesNew = [...this.state.messages, msg];
+      this.setState({ messages: messagesNew, isLoading: false });
+    });
   }
 
   handleLogin() {
@@ -35,14 +60,6 @@ class App extends React.Component {
       } else {
         console.log("else");
       }
-    });
-  }
-
-  loadMessages() {
-    database.ref("messages").on("child_added", (snapshot) => {
-      const msg = snapshot.val();
-      const messagesNew = [...this.state.messages, msg];
-      this.setState({ messages: messagesNew, isLoading: false });
     });
   }
 
@@ -67,17 +84,21 @@ class App extends React.Component {
   }
 
   sendMessage = (msgText) => {
+    const { currentThreadId } = this.state;
     const time = new Date();
     const msg = {
       sender: this.state.username,
       text: msgText,
       time: time.toString(),
     };
-    database.ref("messages").push(msg);
-  }
 
-  setCurrentThread = (currentThreadId, currentThreadName) => {
-    this.setState({ currentThreadId, currentThreadName });
+    // push message to the thread and set it as the last message of the thread
+    const newKey = database.ref("messages").push().key;
+    const updates = {
+      [`messages/${currentThreadId}/${newKey}`]: msg,
+      [`threads/${currentThreadId}/msg`]: msg,
+    };
+    database.ref().update(updates);
   }
 
   createNewThread = (title) => {

@@ -14,6 +14,7 @@ class ChatMessages extends React.Component {
       sender: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       time: PropTypes.string.isRequired,
+      key: PropTypes.string.isRequired,
     })).isRequired,
   }
 
@@ -39,7 +40,7 @@ class ChatMessages extends React.Component {
       prevSenderName = msg.sender;
       return (
         <ChatBubble
-          key={msg.time}
+          key={msg.key}
           username={this.props.username}
           sender={msg.sender}
           time={msg.time}
