@@ -13,6 +13,7 @@ class App extends React.Component {
     messages: [],
     threads: [],
     isLoading: false,
+    showSidebarMobile: true,
   }
 
   componentDidMount() {
@@ -104,9 +105,21 @@ class App extends React.Component {
     });
   }
 
+  toggleSidebar = () => {
+    this.setState({ showSidebarMobile: !this.state.showSidebarMobile });
+  }
+
   render() {
-    const { username, currentThreadName, currentThreadId, messages, isLoading, threads } = this.state;
-    const { sendMessage, setCurrentThread, createNewThread } = this;
+    const {
+      username,
+      currentThreadName,
+      currentThreadId,
+      messages,
+      isLoading,
+      threads,
+      showSidebarMobile,
+    } = this.state;
+    const { sendMessage, setCurrentThread, createNewThread, toggleSidebar } = this;
     const { currentUser } = firebase.auth();
 
     if (!currentUser || isLoading) {
@@ -114,15 +127,20 @@ class App extends React.Component {
         <Loader />
       );
     }
+
+    const containerClass = showSidebarMobile ? "threads" : "chat";
+
     return (
-      <div id="container">
+      <div id="container" className={containerClass}>
         <Threads
+          toggleSidebar={toggleSidebar}
           threads={threads}
           currentThreadId={currentThreadId}
           setCurrentThread={setCurrentThread}
           createNewThread={createNewThread}
         />
         {currentThreadId && <ChatPanel
+          toggleSidebar={toggleSidebar}
           chatName={currentThreadName}
           username={username}
           messages={messages}

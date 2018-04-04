@@ -5,9 +5,10 @@ import "../stylesheets/ThreadItem.scss";
 
 const ENTER_KEY_CODE = 13;
 
-function ThreadItem({ isCurrent, thread, setCurrentThread }) {
+function ThreadItem({ toggleSidebar, isCurrent, thread, setCurrentThread }) {
   const clickHandler = () => {
     setCurrentThread(thread.key, thread.title);
+    toggleSidebar();
   };
 
   const keyHandler = (e) => {

@@ -31,10 +31,11 @@ class ChatPanel extends React.Component {
   }
 
   render() {
-    const { chatName, username, messages, sendMessage } = this.props;
+    const { chatName, username, messages, sendMessage, toggleSidebar } = this.props;
     const { handleClick } = this;
     return (
       <div id="chat-panel">
+        <button onClick={toggleSidebar}>Click me</button>
         <div id="chat-titlebar">
           <h1 id="chat-name">{chatName}</h1>
         </div>

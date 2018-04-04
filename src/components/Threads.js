@@ -4,7 +4,7 @@ import swal from "sweetalert2";
 import ThreadItem from "./ThreadItem";
 import "../stylesheets/Threads.scss";
 
-function Threads({ createNewThread, currentThreadId, setCurrentThread, threads }) {
+function Threads({ toggleSidebar, createNewThread, currentThreadId, setCurrentThread, threads }) {
   const clickHandler = () => {
     swal({
       text: "Enter a name",
@@ -28,7 +28,7 @@ function Threads({ createNewThread, currentThreadId, setCurrentThread, threads }
   };
 
   return (
-    <div className="threads">
+    <div id="threads">
       <div className="titlebar">
         Conversations
         <button id="new-convo-btn" onClick={clickHandler}>
@@ -40,6 +40,7 @@ function Threads({ createNewThread, currentThreadId, setCurrentThread, threads }
           <ThreadItem
             key={thread.key}
             thread={thread}
+            toggleSidebar={toggleSidebar}
             isCurrent={currentThreadId === thread.key}
             setCurrentThread={setCurrentThread}
           />

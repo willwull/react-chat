@@ -3,3 +3,28 @@
   grid-template-columns: 300px 1fr;
   grid-template-rows: 100vh;
 }
+
+@media (max-width: 575px) {
+  html, body {
+    height: 100%;
+  }
+  #root {
+    height: 100%;
+  }
+  #container {
+    display: block;
+
+    &.chat {
+      height: 100%;
+      #threads {
+        display: none;
+      }
+    }
+
+    &.threads {
+      #chat-panel {
+        display: none;
+      }
+    }
+  }
+}
