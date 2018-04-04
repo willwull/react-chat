@@ -27,7 +27,6 @@ class App extends React.Component {
     this.setState({
       currentThreadId: newThreadId,
       currentThreadName: newThreadName,
-      messages: [],
     });
 
     this.loadMessages(newThreadId);
@@ -36,13 +35,9 @@ class App extends React.Component {
   loadMessages(threadId) {
     if (!threadId) return;
 
-    database.ref(`messages/${threadId}`).on("child_added", (snapshot) => {
-      const msg = {
-        ...snapshot.val(),
-        key: snapshot.key,
-      };
-      const messagesNew = [...this.state.messages, msg];
-      this.setState({ messages: messagesNew, isLoading: false });
+    database.ref(`messages/${threadId}`).on("value", (snapshot) => {
+      const messages = Object.entries(snapshot.val()).map(([key, val]) => ({ key, ...val }));
+      this.setState({ messages });
     });
   }
 
@@ -72,14 +67,11 @@ class App extends React.Component {
       this.setCurrentThread(key, value.title);
     });
 
-    // list all threads
-    ref.on("child_added", (snapshot) => {
-      const thread = {
-        ...snapshot.val(),
-        key: snapshot.key,
-      };
-      const threadsNew = [...this.state.threads, thread];
-      this.setState({ threads: threadsNew });
+    ref.on("value", (snapshot) => {
+      if (!snapshot.val()) return;
+
+      const threads = Object.entries(snapshot.val()).map(([key, val]) => ({ key, ...val }));
+      this.setState({ threads });
     });
   }
 
