@@ -36,6 +36,8 @@ class App extends React.Component {
     if (!threadId) return;
 
     database.ref(`messages/${threadId}`).on("value", (snapshot) => {
+      if (!snapshot.val()) return;
+
       const messages = Object.entries(snapshot.val()).map(([key, val]) => ({ key, ...val }));
       this.setState({ messages });
     });
@@ -77,11 +79,11 @@ class App extends React.Component {
 
   sendMessage = (msgText) => {
     const { currentThreadId } = this.state;
-    const time = new Date();
+    const time = Date.now();
     const msg = {
       sender: this.state.username,
       text: msgText,
-      time: time.toString(),
+      time,
     };
 
     // push message to the thread and set it as the last message of the thread
