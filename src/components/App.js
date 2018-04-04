@@ -14,6 +14,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.handleLogin();
+    this.loadMessages();
+    this.loadThreads();
+  }
+
+  handleLogin() {
     firebase.auth().signInAnonymously()
       .catch((err) => {
         console.error(err);
@@ -28,13 +34,17 @@ class App extends React.Component {
         console.log("else");
       }
     });
+  }
 
+  loadMessages() {
     database.ref("messages").on("child_added", (snapshot) => {
       const msg = snapshot.val();
       const messagesNew = [...this.state.messages, msg];
       this.setState({ messages: messagesNew, isLoading: false });
     });
+  }
 
+  loadThreads() {
     database.ref("threads").on("child_added", (snapshot) => {
       const thread = {
         ...snapshot.val(),
