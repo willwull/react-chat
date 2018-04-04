@@ -15,6 +15,9 @@ function ThreadItem({ thread, setCurrentThread }) {
     }
   };
 
+  const msgText = thread.msg ? thread.msg.text : "No messages yet";
+  const msgTime = thread.msg ? thread.msg.time : "";
+
   return (
     <div
       className="thread-item"
@@ -24,10 +27,10 @@ function ThreadItem({ thread, setCurrentThread }) {
       tabIndex="0"
     >
       <div>
-        <div className="title">{thread.title}</div>
-        <div className="last-msg">{"lul"}</div>
+        <div className="title">#{thread.title}</div>
+        <div className="last-msg">{msgText}</div>
       </div>
-      <div className="time">{"0"}</div>
+      <div className="time">{msgTime}</div>
     </div>
   );
 }
@@ -36,6 +39,10 @@ ThreadItem.propTypes = {
   thread: PropTypes.shape({
     key: PropTypes.string,
     title: PropTypes.string,
+    msg: PropTypes.shape({
+      text: PropTypes.string,
+      time: PropTypes.string,
+    }),
   }).isRequired,
   setCurrentThread: PropTypes.func.isRequired,
 };
