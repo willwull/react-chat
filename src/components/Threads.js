@@ -4,7 +4,7 @@ import swal from "sweetalert2";
 import ThreadItem from "./ThreadItem";
 import "../stylesheets/Threads.scss";
 
-function Threads({ createNewThread, threads }) {
+function Threads({ createNewThread, setCurrentThread, threads }) {
   const clickHandler = () => {
     swal({
       text: "Enter a name",
@@ -36,7 +36,13 @@ function Threads({ createNewThread, threads }) {
         </button>
       </div>
       <div className="list">
-        {threads.map(thread => <ThreadItem key={thread.key} title={thread.title} msg="lul" time="0" />)}
+        {threads.map(thread => (
+          <ThreadItem
+            key={thread.key}
+            thread={thread}
+            setCurrentThread={setCurrentThread}
+          />
+        ))}
       </div>
     </div>
   );
@@ -44,6 +50,7 @@ function Threads({ createNewThread, threads }) {
 
 Threads.propTypes = {
   createNewThread: PropTypes.func.isRequired,
+  setCurrentThread: PropTypes.func.isRequired,
   threads: PropTypes.array.isRequired,
 };
 

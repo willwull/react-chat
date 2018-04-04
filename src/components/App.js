@@ -8,6 +8,8 @@ import "../stylesheets/App.scss";
 class App extends React.Component {
   state = {
     username: "",
+    currentThreadName: "",
+    currentThreadId: "",
     messages: [],
     threads: [],
     isLoading: false,
@@ -45,7 +47,16 @@ class App extends React.Component {
   }
 
   loadThreads() {
-    database.ref("threads").on("child_added", (snapshot) => {
+    const ref = database.ref("threads");
+
+    // set current thread to the first value
+    ref.orderByKey().limitToFirst(1).once("value", (snapshot) => {
+      const [key, value] = Object.entries(snapshot.val())[0];
+      this.setCurrentThread(key, value.title);
+    });
+
+    // list all threads
+    ref.on("child_added", (snapshot) => {
       const thread = {
         ...snapshot.val(),
         key: snapshot.key,
@@ -65,6 +76,10 @@ class App extends React.Component {
     database.ref("messages").push(msg);
   }
 
+  setCurrentThread = (currentThreadId, currentThreadName) => {
+    this.setState({ currentThreadId, currentThreadName });
+  }
+
   createNewThread = (title) => {
     database.ref("threads").push({
       title,
@@ -72,8 +87,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { username, messages, isLoading, threads } = this.state;
-    const { sendMessage, createNewThread } = this;
+    const { username, currentThreadName, messages, isLoading, threads } = this.state;
+    const { sendMessage, setCurrentThread, createNewThread } = this;
     const { currentUser } = firebase.auth();
 
     if (!currentUser || isLoading) {
@@ -83,8 +98,17 @@ class App extends React.Component {
     }
     return (
       <div id="container">
-        <Threads threads={threads} createNewThread={createNewThread} />
-        <ChatPanel chatName="react-chat" username={username} messages={messages} sendMessage={sendMessage} />
+        <Threads
+          threads={threads}
+          setCurrentThread={setCurrentThread}
+          createNewThread={createNewThread}
+        />
+        <ChatPanel
+          chatName={currentThreadName}
+          username={username}
+          messages={messages}
+          sendMessage={sendMessage}
+        />
       </div>
     );
   }
