@@ -36,7 +36,10 @@ class App extends React.Component {
     if (!threadId) return;
 
     database.ref(`messages/${threadId}`).on("value", (snapshot) => {
-      if (!snapshot.val()) return;
+      if (!snapshot.val()) {
+        this.setState({ messages: [] });
+        return;
+      }
 
       const messages = Object.entries(snapshot.val()).map(([key, val]) => ({ key, ...val }));
       this.setState({ messages });
@@ -118,12 +121,12 @@ class App extends React.Component {
           setCurrentThread={setCurrentThread}
           createNewThread={createNewThread}
         />
-        <ChatPanel
+        {currentThreadName && <ChatPanel
           chatName={currentThreadName}
           username={username}
           messages={messages}
           sendMessage={sendMessage}
-        />
+        />}
       </div>
     );
   }
