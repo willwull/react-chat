@@ -4,7 +4,7 @@ import swal from "sweetalert2";
 import ThreadItem from "./ThreadItem";
 import "../stylesheets/Threads.scss";
 
-function Threads(props) {
+function Threads({ createNewThread, threads }) {
   const clickHandler = () => {
     swal({
       text: "Enter a name",
@@ -16,6 +16,14 @@ function Threads(props) {
       cancelButtonClass: "cancel",
       confirmButtonClass: "confirm",
       buttonsStyling: false,
+    }).then((input) => {
+      if (!input) return;
+      if (!input.value) return;
+
+      const cleanedUpName = input.value.replace(/#/g, "");
+      if (!cleanedUpName) return;
+
+      createNewThread(cleanedUpName);
     });
   };
 
@@ -28,14 +36,15 @@ function Threads(props) {
         </button>
       </div>
       <div className="list">
-        <ThreadItem title="react-chat" msg="lul" time="0" />
+        {threads.map(thread => <ThreadItem key={thread.key} title={thread.title} msg="lul" time="0" />)}
       </div>
     </div>
   );
 }
 
 Threads.propTypes = {
-
+  createNewThread: PropTypes.func.isRequired,
+  threads: PropTypes.array.isRequired,
 };
 
 export default Threads;

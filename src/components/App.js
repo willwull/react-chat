@@ -9,6 +9,7 @@ class App extends React.Component {
   state = {
     username: "",
     messages: [],
+    threads: [],
     isLoading: false,
   }
 
@@ -30,9 +31,17 @@ class App extends React.Component {
 
     database.ref("messages").on("child_added", (snapshot) => {
       const msg = snapshot.val();
-      const messagesNew = [...this.state.messages];
-      messagesNew.push(msg);
+      const messagesNew = [...this.state.messages, msg];
       this.setState({ messages: messagesNew, isLoading: false });
+    });
+
+    database.ref("threads").on("child_added", (snapshot) => {
+      const thread = {
+        ...snapshot.val(),
+        key: snapshot.key,
+      };
+      const threadsNew = [...this.state.threads, thread];
+      this.setState({ threads: threadsNew });
     });
   }
 
@@ -46,9 +55,15 @@ class App extends React.Component {
     database.ref("messages").push(msg);
   }
 
+  createNewThread = (title) => {
+    database.ref("threads").push({
+      title,
+    });
+  }
+
   render() {
-    const { username, messages, isLoading } = this.state;
-    const { sendMessage } = this;
+    const { username, messages, isLoading, threads } = this.state;
+    const { sendMessage, createNewThread } = this;
     const { currentUser } = firebase.auth();
 
     if (!currentUser || isLoading) {
@@ -58,7 +73,7 @@ class App extends React.Component {
     }
     return (
       <div id="container">
-        <Threads />
+        <Threads threads={threads} createNewThread={createNewThread} />
         <ChatPanel chatName="react-chat" username={username} messages={messages} sendMessage={sendMessage} />
       </div>
     );
