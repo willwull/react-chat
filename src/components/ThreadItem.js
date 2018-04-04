@@ -27,11 +27,11 @@ function ThreadItem({ thread, setCurrentThread }) {
       role="menuitem"
       tabIndex="0"
     >
-      <div>
+      <div className="top-row">
         <div className="title">#{thread.title}</div>
-        <div className="last-msg">{msgText}</div>
+        <div className="time">{msgTime}</div>
       </div>
-      <div className="time">{msgTime}</div>
+      <div className="last-msg">{msgText}</div>
     </div>
   );
 }

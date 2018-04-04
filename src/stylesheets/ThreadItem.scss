@@ -1,7 +1,10 @@
 .thread-item {
-  display: flex;
   padding: 15px;
   cursor: pointer;
+
+  .top-row {
+    display: flex;
+  }
 
   .title {
     font-weight: bold;
