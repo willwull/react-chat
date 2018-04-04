@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import getDisplayTime from "../utils/getDisplayTime";
 import "../stylesheets/ChatBubble.scss";
 
 /**
@@ -44,7 +45,7 @@ function ChatBubble({ username, sender, time, text, isConsecutive }) {
   return (
     <div className={`chat-bubble-container ${senderClass}`}>
       {!isConsecutive && <div className="sender-name">{sender}</div>}
-      <div className="chat-bubble" data-time={time} title={`Sent by ${sender} at ${time}`}>
+      <div className="chat-bubble" data-time={time} title={`Sent by ${sender} at ${getDisplayTime(time)}`}>
         {parseURLs(text)}
       </div>
     </div>
@@ -54,7 +55,7 @@ function ChatBubble({ username, sender, time, text, isConsecutive }) {
 ChatBubble.propTypes = {
   username: PropTypes.string.isRequired,
   sender: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   isConsecutive: PropTypes.bool.isRequired,
 };

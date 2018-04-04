@@ -15,7 +15,7 @@ class ChatPanel extends React.Component {
     messages: PropTypes.arrayOf(PropTypes.shape({
       sender: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
+      time: PropTypes.number.isRequired,
       key: PropTypes.string.isRequired,
     })).isRequired,
     sendMessage: PropTypes.func.isRequired,

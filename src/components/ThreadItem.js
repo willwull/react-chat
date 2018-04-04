@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import getDisplayTime from "../utils/getDisplayTime";
 import "../stylesheets/ThreadItem.scss";
 
 const ENTER_KEY_CODE = 13;
@@ -16,7 +17,7 @@ function ThreadItem({ thread, setCurrentThread }) {
   };
 
   const msgText = thread.msg ? thread.msg.text : "No messages yet";
-  const msgTime = thread.msg ? thread.msg.time : "";
+  const msgTime = thread.msg ? getDisplayTime(thread.msg.time) : "";
 
   return (
     <div
@@ -41,7 +42,7 @@ ThreadItem.propTypes = {
     title: PropTypes.string,
     msg: PropTypes.shape({
       text: PropTypes.string,
-      time: PropTypes.string,
+      time: PropTypes.number,
     }),
   }).isRequired,
   setCurrentThread: PropTypes.func.isRequired,
