@@ -110,51 +110,6 @@
   /* Enable momentum scrolling in iOS */
   -webkit-overflow-scrolling: touch; }
 /**
- * ChatInput.scss
- * This file contains CSS styling for the bottom part of the chat box where
- * the text input and send button is.
- */
-/**
- * This file contains variables and mixins that can be accessed by any
- * SASS module.
- */
-#chat-input {
-  background-color: #f1f1f1;
-  border-top: 1px solid #d8d8d8;
-  clear: both;
-  padding: 7px;
-  /**
-   * A wrapper for the input field and send button
-   */ }
-  #chat-input .input-group {
-    border-radius: 20px;
-    border: 1px solid #d8d8d8;
-    background-color: white;
-    padding: 1px; }
-  #chat-input .text-input {
-    width: 100%;
-    padding: 0 10px;
-    background: none;
-    border: none; }
-    #chat-input .text-input:focus {
-      outline: none; }
-  #chat-input .send-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 14px;
-    /**
-     * The background is created by stacking the arrow on a circle icon,
-     * so that's why we use color, instead of background-color here.
-     */
-    color: #1edcf6; }
-    #chat-input .send-btn:active {
-      color: #0794a7; }
-    #chat-input .send-btn:focus {
-      outline: none; }
-  #chat-input .fa-arrow-right {
-    color: white; }
-/**
  * ChatPanel.scss
  * Contains CSS rules for the chat panel that are not component specific.
  */
@@ -200,6 +155,51 @@
   #chat-titlebar #chat-name {
     margin: 0;
     font-size: 32px; }
+/**
+ * ChatInput.scss
+ * This file contains CSS styling for the bottom part of the chat box where
+ * the text input and send button is.
+ */
+/**
+ * This file contains variables and mixins that can be accessed by any
+ * SASS module.
+ */
+#chat-input {
+  background-color: #f1f1f1;
+  border-top: 1px solid #d8d8d8;
+  clear: both;
+  padding: 7px;
+  /**
+   * A wrapper for the input field and send button
+   */ }
+  #chat-input .input-group {
+    border-radius: 20px;
+    border: 1px solid #d8d8d8;
+    background-color: white;
+    padding: 1px; }
+  #chat-input .text-input {
+    width: 100%;
+    padding: 0 10px;
+    background: none;
+    border: none; }
+    #chat-input .text-input:focus {
+      outline: none; }
+  #chat-input .send-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    /**
+     * The background is created by stacking the arrow on a circle icon,
+     * so that's why we use color, instead of background-color here.
+     */
+    color: #1edcf6; }
+    #chat-input .send-btn:active {
+      color: #0794a7; }
+    #chat-input .send-btn:focus {
+      outline: none; }
+  #chat-input .fa-arrow-right {
+    color: white; }
 .loader {
   position: absolute;
   width: 100px;
